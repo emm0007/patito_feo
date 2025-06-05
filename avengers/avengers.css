@@ -6,59 +6,91 @@ body {
 }
 
 header {
-  position: fixed;
-  width: 100%;
+  /* Eliminado fondo rojo y degradado */
+  background: transparent;
+  padding: 1rem 3rem;
+  text-align: center;
+  position: sticky;
   top: 0;
-  background: linear-gradient(to right, #111, #222);
-  padding: 1rem;
   z-index: 1000;
-  transition: top 0.4s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: top 0.3s ease;
 }
 
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 95%;
-  margin: 0 auto;
+header.hide {
+  top: -100px;
 }
 
 header h1 {
-  font-size: 1.5rem;
   margin: 0;
-}
-
-.hamburger {
   font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
+  flex-grow: 1;
+  text-align: center;
+  color: #fff;
+  user-select: none;
 }
 
+/* Botón hamburguesa */
+.menu-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0.5rem;
+}
+
+.menu-btn span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* Navegación */
 nav {
+  position: fixed;
+  top: 60px;
+  left: 1rem;
+  background: #111;
+  border-radius: 8px;
+  padding: 1rem 2rem;
   display: none;
   flex-direction: column;
-  background-color: #111;
-  padding: 1rem;
+  gap: 1rem;
+  box-shadow: 0 0 10px #e62429cc;
+  user-select: none;
+  z-index: 1050;
 }
 
-nav.active {
+nav.show {
   display: flex;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  padding: 0.5rem 0;
-  text-align: center;
-  border-bottom: 1px solid #333;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffd700;
 }
 
 .intro {
-  padding: 7rem 1rem 2rem;
   text-align: center;
+  padding: 2rem 1rem;
 }
 
 .intro img {
@@ -111,6 +143,8 @@ nav a {
 .datos {
   padding: 2rem 1rem;
   background-color: #111;
+  max-width: 900px;
+  margin: auto;
 }
 
 .datos ul {
@@ -129,21 +163,39 @@ footer {
   margin-top: 2rem;
 }
 
-@media screen and (min-width: 768px) {
+/* Responsive */
+
+@media (min-width: 768px) {
   nav {
-    flex-direction: row;
-    justify-content: flex-end;
-    display: flex !important;
-    background: none;
+    position: static;
+    display: none !important; /* Ocultamos nav en escritorio, se abre solo con botón */
+    background: transparent;
     padding: 0;
+    box-shadow: none;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
   }
 
-  nav a {
-    border: none;
-    padding: 0 1rem;
+  nav.show {
+    display: flex !important;
+    position: fixed;
+    top: 60px;
+    left: 1rem;
+    background: #111;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 10px #e62429cc;
+    flex-direction: column;
   }
 
-  .hamburger {
-    display: none;
+  .menu-btn {
+    left: 2rem;
+    top: 1rem;
+  }
+
+  header {
+    justify-content: center;
+    padding: 1rem 3rem;
   }
 }
