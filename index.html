@@ -10,16 +10,16 @@
   <header id="header">
     <div class="menu-container">
       <h1 class="logo">Marvel</h1>
-      <button class="menu-toggle" id="menu-toggle">&#9776;</button>
-      <nav id="nav" class="hidden">
-        <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="avengers/avengers.html">Avengers</a></li>
-          <li><a href="spiderman/spiderman.html">Spider-Man</a></li>
-          <li><a href="ironman/ironman.html">Iron Man</a></li>
-        </ul>
-      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">&#9776;</button>
     </div>
+    <nav id="nav" class="nav hidden">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="avengers/avengers.html">Avengers</a></li>
+        <li><a href="spiderman/spiderman.html">Spider-Man</a></li>
+        <li><a href="ironman/ironman.html">Iron Man</a></li>
+      </ul>
+    </nav>
   </header>
 
   <section class="hero">
@@ -60,22 +60,20 @@
   </footer>
 
   <script>
-    // Mostrar y ocultar menú hamburguesa
     const toggle = document.getElementById("menu-toggle");
     const nav = document.getElementById("nav");
+    const header = document.getElementById("header");
 
     toggle.addEventListener("click", () => {
       nav.classList.toggle("hidden");
     });
 
-    // Ocultar/mostrar header al hacer scroll
     let lastScroll = 0;
-    const header = document.getElementById("header");
-
     window.addEventListener("scroll", () => {
       const currentScroll = window.pageYOffset;
       if (currentScroll > lastScroll) {
         header.style.top = "-100px";
+        nav.classList.add("hidden");
       } else {
         header.style.top = "0";
       }
