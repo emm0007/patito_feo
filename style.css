@@ -9,32 +9,42 @@ body {
   background-color: #121212;
   color: #ffffff;
   line-height: 1.6;
+  padding-top: 70px; /* espacio para el header fijo */
 }
 
 header {
   background-color: #e62429;
-  padding: 1rem 0;
-  position: sticky;
+  padding: 0.4rem 0;
+  position: fixed;
+  width: 100%;
   top: 0;
   z-index: 1000;
+  transition: top 0.3s;
 }
 
 .container {
-  width: 90%;
+  width: 95%;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 header h1 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  padding: 0.5rem 0;
+  flex: 1 1 100%;
+  text-align: center;
 }
 
 nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 nav a {
@@ -51,12 +61,16 @@ nav a:hover {
 .hero {
   background-color: #1f1f1f;
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .hero-text h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.hero-text p {
+  font-size: 1rem;
 }
 
 .hero img {
@@ -86,6 +100,7 @@ nav a:hover {
   background-color: #262626;
   padding: 1rem;
   border-radius: 10px;
+  width: 100%;
   max-width: 200px;
   transition: transform 0.3s;
 }
@@ -116,4 +131,48 @@ footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem 0;
+  }
+
+  .hero-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .card {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .destacados h3 {
+    font-size: 1.1rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
 }
