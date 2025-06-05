@@ -9,64 +9,77 @@ body {
   background-color: #121212;
   color: #ffffff;
   line-height: 1.6;
-  padding-top: 70px; /* espacio para el header fijo */
+  padding-top: 70px;
 }
 
+/* ======= HEADER ======= */
 header {
   background-color: #e62429;
-  padding: 0.4rem 0;
   position: fixed;
   width: 100%;
   top: 0;
+  left: 0;
   z-index: 1000;
-  transition: top 0.3s;
+  transition: top 0.4s;
 }
 
-.container {
-  width: 95%;
-  margin: auto;
+.menu-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
 }
 
-header h1 {
+.logo {
   font-size: 1.5rem;
-  margin-bottom: 0;
-  padding: 0.5rem 0;
-  flex: 1 1 100%;
-  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
 }
 
 nav ul {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  padding: 1rem 0;
+  text-align: center;
+  background-color: #e62429;
+}
+
+nav ul li {
+  margin: 0.5rem 0;
 }
 
 nav a {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
+  display: block;
 }
 
 nav a:hover {
   color: #ffd700;
 }
 
+.hidden {
+  display: none;
+}
+
+/* ======= HERO ======= */
 .hero {
   background-color: #1f1f1f;
   text-align: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 .hero-text h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-text p {
@@ -79,6 +92,7 @@ nav a:hover {
   width: 80%;
 }
 
+/* ======= DESTACADOS ======= */
 .destacados {
   padding: 2rem;
   text-align: center;
@@ -113,12 +127,14 @@ nav a:hover {
 .card p {
   margin-top: 0.5rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .card:hover {
   transform: scale(1.05);
 }
 
+/* ======= AUTOR & FOOTER ======= */
 .autor {
   background-color: #1a1a1a;
   padding: 2rem;
@@ -133,46 +149,28 @@ footer {
   font-size: 0.9rem;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    text-align: center;
+/* ======= RESPONSIVE ======= */
+@media (min-width: 768px) {
+  nav {
+    display: block !important;
+  }
+
+  .menu-toggle {
+    display: none;
   }
 
   nav ul {
-    flex-direction: column;
-    gap: 10px;
-    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    padding: 0;
   }
 
-  .hero-text h2 {
-    font-size: 1.3rem;
+  nav ul li {
+    margin: 0 1rem;
   }
 
-  .card {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 1.2rem;
-  }
-
-  .hero-text h2 {
-    font-size: 1.2rem;
-  }
-
-  .hero-text p {
-    font-size: 0.95rem;
-  }
-
-  .destacados h3 {
-    font-size: 1.1rem;
-  }
-
-  footer {
-    font-size: 0.8rem;
+  header {
+    padding: 0.3rem 2rem;
   }
 }
