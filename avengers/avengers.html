@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Avengers - Universo Marvel</title>
-  <link rel="stylesheet" href="avengers.css">
+  <link rel="stylesheet" href="avengers.css" />
 </head>
 <body>
   <header id="header">
-    <div class="header-content">
-      <h1>The Avengers</h1>
-      <button class="hamburger" id="hamburger">&#9776;</button>
-    </div>
-    <nav id="menu">
+    <h1>🛡️ Los Avengers 🛡️</h1>
+    <button class="menu-btn" id="menu-btn" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="nav-menu" class="nav-menu" aria-hidden="true">
       <a href="../index.html">Volver al inicio</a>
     </nav>
   </header>
@@ -25,19 +26,43 @@
 
   <section class="video">
     <h2>Tráiler oficial de Avengers: Endgame</h2>
-    <iframe width="100%" height="400" src="https://www.youtube.com/embed/TcMBFSGVi1c"
-    title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    <iframe
+      width="100%"
+      height="400"
+      src="https://www.youtube.com/embed/TcMBFSGVi1c"
+      title="YouTube video player"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
   </section>
 
   <section class="galeria">
     <h2>Miembros Principales</h2>
     <div class="cards">
-      <div class="card"><img src="https://allears.net/wp-content/uploads/2019/03/AvengersEndgame_Online-Char_AvengeHonor-Series_IronMan_v1_Lg.jpg" alt="Iron Man"><p>Iron Man</p></div>
-      <div class="card"><img src="https://allears.net/wp-content/uploads/2019/03/AvengersEndgame_Online-Char_AvengeHonor-Series_CaptAm_v2_Lg.jpg" alt="Capitán América"><p>Capitán América</p></div>
-      <div class="card"><img src="https://allears.net/wp-content/uploads/2019/03/AvengersEndgame_Online-Char_AvengeHonor-Series_Thor_v1_Lg.jpg" alt="Thor"><p>Thor</p></div>
-      <div class="card"><img src="https://wallpaperaccess.com/full/6069329.jpg" alt="Black Widow"><p>Black Widow</p></div>
-      <div class="card"><img src="https://i.pinimg.com/originals/dc/ad/24/dcad241448164c0b89541e7efbe39895.jpg" alt="Hawkeye"><p>Hawkeye</p></div>
-      <div class="card"><img src="https://static0.colliderimages.com/wordpress/wp-content/uploads/2019/03/avengers-endgame-poster-bruce-banner-hulk-mark-ruffalo.jpg" alt="Hulk"><p>Hulk</p></div>
+      <div class="card">
+        <img src="https://allears.net/wp-content/uploads/2019/03/AvengersEndgame_Online-Char_AvengeHonor-Series_IronMan_v1_Lg.jpg" alt="Iron Man" />
+        <p>Iron Man</p>
+      </div>
+      <div class="card">
+        <img src="https://allears.net/wp-content/uploads/2019/03/AvengersEndgame_Online-Char_AvengeHonor-Series_CaptAm_v2_Lg.jpg" alt="Capitán América" />
+        <p>Capitán América</p>
+      </div>
+      <div class="card">
+        <img src="https://allears.net/wp-content/uploads/2019/03/AvengersEndgame_Online-Char_AvengeHonor-Series_Thor_v1_Lg.jpg" alt="Thor" />
+        <p>Thor</p>
+      </div>
+      <div class="card">
+        <img src="https://wallpaperaccess.com/full/6069329.jpg" alt="Black Widow" />
+        <p>Black Widow</p>
+      </div>
+      <div class="card">
+        <img src="https://i.pinimg.com/originals/dc/ad/24/dcad241448164c0b89541e7efbe39895.jpg" alt="Hawkeye" />
+        <p>Hawkeye</p>
+      </div>
+      <div class="card">
+        <img src="https://static0.colliderimages.com/wordpress/wp-content/uploads/2019/03/avengers-endgame-poster-bruce-banner-hulk-mark-ruffalo.jpg" alt="Hulk" />
+        <p>Hulk</p>
+      </div>
     </div>
   </section>
 
@@ -57,23 +82,30 @@
   </footer>
 
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('menu');
+    const menuBtn = document.getElementById('menu-btn');
+    const navMenu = document.getElementById('nav-menu');
     const header = document.getElementById('header');
 
-    hamburger.addEventListener('click', () => {
-      menu.classList.toggle('active');
+    menuBtn.addEventListener('click', () => {
+      const isVisible = navMenu.classList.toggle('show');
+      navMenu.setAttribute('aria-hidden', !isVisible);
     });
 
-    let lastScrollTop = 0;
+    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        header.style.top = "-100px";
-      } else {
-        header.style.top = "0";
+      const currentScroll = window.pageYOffset;
+      if (currentScroll <= 0) {
+        header.classList.remove('hide');
+        return;
       }
-      lastScrollTop = scrollTop;
+      if (currentScroll > lastScroll && !header.classList.contains('hide')) {
+        // scroll down
+        header.classList.add('hide');
+      } else if (currentScroll < lastScroll && header.classList.contains('hide')) {
+        // scroll up
+        header.classList.remove('hide');
+      }
+      lastScroll = currentScroll;
     });
   </script>
 </body>
