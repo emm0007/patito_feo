@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Universo Marvel</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -26,22 +26,22 @@
       <h2>Explora el épico mundo de Marvel</h2>
       <p>Superhéroes, batallas cósmicas y el poder de la imaginación reunidos en un solo lugar.</p>
     </div>
-    <img src="https://cdn.worldvectorlogo.com/logos/marvel.svg" alt="Marvel Logo">
+    <img src="https://cdn.worldvectorlogo.com/logos/marvel.svg" alt="Marvel Logo" />
   </section>
 
   <section class="destacados">
     <h3>Personajes Principales</h3>
     <div class="galeria">
       <div class="card">
-        <img src="https://image.tmdb.org/t/p/original/qMxAmzGQO722q0UlssCOPhrXmvX.jpg" alt="Avengers">
+        <img src="https://image.tmdb.org/t/p/original/qMxAmzGQO722q0UlssCOPhrXmvX.jpg" alt="Avengers" />
         <p>Los Avengers</p>
       </div>
       <div class="card">
-        <img src="https://i5.walmartimages.com/asr/7113b02d-1663-4d1a-8032-1c5b2fab099d.596e4d122bcb72736ebe0b5a0fd83324.jpeg" alt="Spider-Man">
+        <img src="https://i5.walmartimages.com/asr/7113b02d-1663-4d1a-8032-1c5b2fab099d.596e4d122bcb72736ebe0b5a0fd83324.jpeg" alt="Spider-Man" />
         <p>Spider-Man</p>
       </div>
       <div class="card">
-        <img src="https://i.pinimg.com/originals/31/bf/71/31bf713c56ef612ba651ff46977d6a4a.jpg" alt="Iron Man">
+        <img src="https://i.pinimg.com/originals/31/bf/71/31bf713c56ef612ba651ff46977d6a4a.jpg" alt="Iron Man" />
         <p>Iron Man</p>
       </div>
     </div>
@@ -49,13 +49,28 @@
 
   <section class="autor">
     <h3>Información del Autor</h3>
-    <p><strong>Nombre:</strong>Rhandall Arrellano</p>
-    <p><strong>Grado y Grupo:</strong>Tercero 3</p>
-    <p><strong>Escuela:</strong>EPOEM 87</p>
+    <p><strong>Nombre:</strong> Rhandall Arrellano</p>
+    <p><strong>Grado y Grupo:</strong> Tercero 3</p>
+    <p><strong>Escuela:</strong> EPOEM 87</p>
   </section>
 
   <footer>
     <p>&copy; 2025 - Proyecto escolar realizado por Rhandall Arrellano</p>
   </footer>
+
+  <script>
+    let lastScrollTop = 0;
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        header.style.top = "-80px";
+      } else {
+        header.style.top = "0";
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
 </body>
 </html>
